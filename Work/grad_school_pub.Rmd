@@ -118,7 +118,7 @@ school_1_sop <- print(school_1_sop, target = (paste0(root_path, "/school_1/schoo
 
 # creating an individual data frame containing just school_2's information
 
-school_2 <- no_ph_needed[which(no_ph_needed$s == "2"),]
+school_2 <- ph_needed[which(ph_needed$s == "2"),]
 
 # replacing all of the place holders with the actual blurbs written by you (this school does require a PH so I am calling my sop_w_PH version)
 
