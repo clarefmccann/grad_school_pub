@@ -1,0 +1,136 @@
+---
+title: "grad_school_pub"
+author: "Clare F McCann"
+date: "11/13/2021"
+output:
+  html_document:
+    code_folding: hide
+    df_print: paged
+    highlight: tango
+    theme: united
+    toc: yes
+    toc_float:
+      collapsed: yes
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, cache = FALSE)
+```
+
+# load packages
+```{r}
+library(pacman)
+pacman::p_load(officer, dplyr, install = TRUE)
+```
+
+## setting root path 
+```{r root path}
+
+root_path="~/THE/PATH/TO/YOUR/SCHOOL/FOLDER/REPO"
+
+```
+
+## pulling blurbs 
+```{r creating docs}
+
+# work is the folder I kept my blurbs and generic copies of my SoP in 
+
+blurbs <- read.csv(paste0(root_path,"work/blurbs.csv"))
+
+```
+
+## loading in SoP for schools that do not require PH 
+```{r loading in no PH SoP}
+
+# here, I'm loading in the version of my SoP for schools that do not require personal history statements. you may not need to have separate versions depending on where you are applying but my SoP looks a bit different when I don't have a separate essay describing the more personal parts of why I am applying
+
+# loading 
+
+sop_no_ph <- read_docx("sop_no_ph.docx")
+
+# creating a data frame to make sure it loaded properly 
+
+content_sop_no_ph <- docx_summary(sop_no_ph)
+
+```
+
+## loading in SoP for schools that require PH 
+```{r PH SoP}
+
+# here, I'm loading the version of my SoP for schools that do require a personal history statement (aka diversity statement) 
+
+sop_w_ph <- read_docx("sop_w_ph.docx")
+
+# creating a data frame to make sure everything loaded in properly 
+
+content_sop_w_ph <- docx_summary(sop_w_ph)
+
+```
+
+
+## creating list which schools need which versions
+```{r creating list of versions needed}
+
+# in the blurbs.csv, the column "ph_needed" is coded as 0 = No PH, 1 = PH 
+
+no_ph_needed <- blurbs[which(blurbs$need_ph == "0"),]
+ph_needed <- blurbs[which(blurbs$need_ph == "1"),]
+
+# here, I create a variable to label each school (numerically) in each data frame so that I can pull their individuals blurbs easier 
+
+no_ph_needed$s <- c(1)
+ph_needed$s <- c(2)
+
+```
+
+
+## school_1
+```{r school_1}
+
+## school_1 
+
+# creating an individual data frame containing just school_1's information
+
+school_1 <- no_ph_needed[which(no_ph_needed$s == "1"),]
+
+# replacing all of the place holders with the actual blurbs written by you (this school does not require a PH so I am calling my sop_no_PH version)
+
+school_1_sop <- body_replace_all_text(sop_no_ph, "faculty_blurb", school_1$faculty_blurb)
+school_1_sop <- body_replace_all_text(sop_no_ph, "school_blurb", school_1$school_blurb)
+school_1_sop <- body_replace_all_text(sop_no_ph, "FACULTY", school_1$Faculty)
+school_1_sop <- body_replace_all_text(sop_no_ph, "SCHOOL", school_1$SCHOOL)
+school_1_sop <- body_replace_all_text(sop_no_ph, "PROGRAM", school_1$PROGRAM)
+
+# exporting the full SoP into the school's folder 
+
+school_1_sop <- print(school_1_sop, target = (paste0(root_path, "/school_1/school_1_sop.docx")))
+
+
+```
+
+## school_2
+```{r school_2}
+
+## school_2
+
+# creating an individual data frame containing just school_2's information
+
+school_2 <- no_ph_needed[which(no_ph_needed$s == "2"),]
+
+# replacing all of the place holders with the actual blurbs written by you (this school does require a PH so I am calling my sop_w_PH version)
+
+school_2_sop <- body_replace_all_text(sop_w_PH, "faculty_blurb", school_2$faculty_blurb)
+school_2_sop <- body_replace_all_text(sop_w_PH, "school_blurb", school_2$school_blurb)
+school_2_sop <- body_replace_all_text(sop_w_PH, "FACULTY", school_2$Faculty)
+school_2_sop <- body_replace_all_text(sop_w_PH, "SCHOOL", school_2$SCHOOL)
+school_2_sop <- body_replace_all_text(sop_w_PH, "PROGRAM", school_2$PROGRAM)
+
+# exporting the full SoP into the school's folder 
+
+school_2_sop <- print(school_2_sop, target = (paste0(root_path, "/school_2/school_2_sop.docx")))
+
+```
+
