@@ -1,6 +1,6 @@
-# grad_school_pub
+# grad_school_pub ✨
 
-Purpose: Help w/ efficiency of applying to multiple grad schools!
+Purpose: Help w/ efficiency of applying to multiple grad schools! 😊
 
 You can clone this repo on your local machine to use for your own applications.
 
@@ -8,11 +8,11 @@ You can clone this repo on your local machine to use for your own applications.
 - Step 2: in the blurbs.csv fill you will add your unique school and faculty information
 - Step 3: open the R markdown and make the necessary edits (add your path, edit the school names - copy & paste and find & replace will be your best friends)
 - Step 3: run the script 
-- Step 4: breathe, you're almost done :) 
+- Step 4: breathe, you're almost done 🌻
 
 To note: 
 
 - school_1 and school_2 are examples of folders you can create for each school you are applying to. the script will output corresponding statement of purpose's to each school's folder. you can add as many folders/schools as you need!  
 - work is where the script, your unique school information, and the generic version(s) of your statement of purpose 
-- good luck on your applications and interviews!! you got this <3
+- good luck on your applications and interviews!! you got this 👏🏻
      
