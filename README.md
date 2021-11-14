@@ -14,5 +14,5 @@ To note:
 
 - school_1 and school_2 are examples of folders you can create for each school you are applying to. the script will output corresponding statement of purpose's to each school's folder. you can add as many folders/schools as you need!  
 - work is where the script, your unique school information, and the generic version(s) of your statement of purpose 
-- good luck on your applications and interviews!! you got this 👏🏻
+- good luck on your applications and interviews!! you've got this 👏🏻
      
